@@ -1,19 +1,28 @@
-<ion-menu [content]="content">
-  <ion-header>
-    <ion-toolbar>
-      <ion-title>Menu</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-split-pane>
 
-  <ion-content>
-    <ion-list>
-      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
-        {{p.title}}
-      </button>
-    </ion-list>
-  </ion-content>
+  <!-- START IONIC SIDE MENU -->
+  <ion-menu [content]="content" when="lg">
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Filter Options</ion-title>
+      </ion-toolbar>
+    </ion-header>
 
-</ion-menu>
+    <ion-content>
 
-<!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
-<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>
+      <!-- CUSTOM COMPONENT -->
+      <menu-component></menu-component>
+      <!-- END CUSTOM COMPONENT -->
+
+    </ion-content>
+  </ion-menu>
+  <!-- END IONIC SIDE MENU -->
+
+
+
+  <!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
+  
+  <!-- START MAIN CONTENT      Pages displayed from [root] -->
+  <ion-nav main [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>
+  <!-- END MAIN CONTENT -->
+</ion-split-pane>
