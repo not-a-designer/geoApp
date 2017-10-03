@@ -4,6 +4,8 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { AgmCoreModule } from '@agm/core';
 import { AngularFireModule } from 'angularfire2';
 
+import { LocationService } from './location.service';
+
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
@@ -51,6 +53,7 @@ export const googleMapParams = {
     StatusBar,
     SplashScreen,
     Geolocation,
+    LocationService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

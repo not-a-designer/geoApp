@@ -1,69 +1,77 @@
 <ion-list>
         <ion-item-divider>
           Crash type
-          <ion-note item-right><button ion-button clear>Reset</button></ion-note>
+          <ion-note item-right>
+            <button no-margin ion-button clear (click)="selectAll('crash')">Select All</button>
+            <button no-margin ion-button clear (click)="reset('crash')">Reset</button>
+          </ion-note>
         </ion-item-divider>
         <ion-item no-lines *ngFor="let type of crashTypes; let i = index">
           <ion-label>{{ type }}</ion-label>
-          <ion-checkbox></ion-checkbox>
+          <ion-checkbox value="type" [(ngModel)]="selectedQuery.crashTypes[i]"></ion-checkbox>
         </ion-item>
           
         <ion-item-divider>
           Day of the week
-          <ion-note item-right><button ion-button clear>Reset</button></ion-note>
+          <ion-note item-right>
+            <button ion-button clear (click)="selectAll('days')">Select All</button>
+            <button ion-button clear (click)="reset('days')">Reset</button>
+          </ion-note>
         </ion-item-divider>
         <ion-row>
           <ion-col col-xs-10 *ngFor="let day of daysInWeek; let j = index">
             <ion-item no-lines padding-left justify-content-start style="display: inline !important;">
               <ion-label style="display: inline !important;" no-padding no-margin>{{ day }}</ion-label>
-              <ion-checkbox no-margin no-padding></ion-checkbox>
+              <ion-checkbox no-margin no-padding value="day" [(ngModel)]="selectedQuery.days[j]"></ion-checkbox>
             </ion-item>
           </ion-col>
         </ion-row>
         <ion-item-divider>
           Find reported bike crashes
-          <ion-note item-right><button ion-button clear>Reset</button></ion-note>
+          <ion-note item-right><button ion-button clear (click)="reset('find')">Reset</button></ion-note>
         </ion-item-divider>
         <ion-item no-lines>
-          <ion-input #search [(ngModel)]="addressQuery" item-left type="text" placeholder="Enter address..." autocorrect="off"></ion-input>
-          <ion-select item-right interface="popover" placeholder="Radius..." style="float: right;">
-            <ion-option *ngFor="let rad of radiusOptions" value="rad">
+          <ion-input #search [(ngModel)]="selectedQuery.address" type="text" placeholder="Enter address..." autocorrect="off" (keyup)="keyUpEvent($event)"></ion-input>
+        </ion-item>
+        <ion-item no-lines>
+          <ion-select interface="popover" placeholder="Radius..." [(ngModel)]="selectedQuery.radius">
+            <ion-option *ngFor="let rad of radiusOptions" [value]="rad">
               {{ rad }}
             </ion-option>
           </ion-select>
         </ion-item>
         <ion-item>
           <ion-label>At an intersection</ion-label>
-          <ion-checkbox></ion-checkbox>
+          <ion-checkbox [(ngModel)]="selectedQuery.atIntersection"></ion-checkbox>
         </ion-item>
 
         <ion-item-divider>
           Environment
-          <ion-note item-right><button ion-button clear>Reset</button></ion-note>
+          <ion-note item-right><button ion-button clear (click)="reset('environment')">Reset</button></ion-note>
         </ion-item-divider>
         <ion-item no-lines>
-          <ion-select interface="popover" placeholder="Weather conditions" >
-            <ion-option *ngFor="let weather of weatherOptions">
+          <ion-select interface="popover" placeholder="Weather conditions" [(ngModel)]="selectedQuery.weather">
+            <ion-option *ngFor="let weather of weatherOptions" [value]="weather">
               {{ weather }}
             </ion-option>
           </ion-select>
         </ion-item>
         <ion-item no-lines>
-          <ion-select interface="popover" placeholder="Lighting conditions">
-            <ion-option *ngFor="let light of lightingOptions">
+          <ion-select interface="popover" placeholder="Lighting conditions" [(ngModel)]="selectedQuery.lighting">
+            <ion-option *ngFor="let light of lightingOptions" [value]="light">
               {{ light }}
             </ion-option>
           </ion-select>
         </ion-item>
         <ion-item>
-          <ion-select interface="popover" placeholder="Surface conditions">
-            <ion-option *ngFor="let surface of surfaceOptions">
+          <ion-select interface="popover" placeholder="Surface conditions" [(ngModel)]="selectedQuery.surface">
+            <ion-option *ngFor="let surface of surfaceOptions" [value]="surface">
               {{ surface }}
             </ion-option>
           </ion-select>
         </ion-item>
         <ion-item>
-          <button item-left ion-button clear>Clear all options</button>
+          <button item-left ion-button clear (click)="resetAll()">Reset all options</button>
           <ion-note item-right style="float: right !important;">found {{ reportsFound }} reports</ion-note>
         </ion-item>
       </ion-list>

@@ -12,7 +12,77 @@
 
       <!-- CUSTOM COMPONENT -->
       <menu-component></menu-component>
-      <!-- END CUSTOM COMPONENT -->
+       <!-- END CUSTOM COMPONENT -->
+
+       <!--<ion-list>
+        <ion-item-divider>
+          Crash type
+          <ion-note item-right><button ion-button clear>Reset</button></ion-note>
+        </ion-item-divider>
+        <ion-item no-lines *ngFor="let type of crashTypes; let i = index">
+          <ion-label>{{ type }}</ion-label>
+          <ion-checkbox></ion-checkbox>
+        </ion-item>
+          
+        <ion-item-divider>
+          Day of the week
+          <ion-note item-right><button ion-button clear>Reset</button></ion-note>
+        </ion-item-divider>
+        <ion-row>
+          <ion-col col-xs-10 *ngFor="let day of daysInWeek; let j = index">
+            <ion-item no-lines padding-left justify-content-start style="display: inline !important;">
+              <ion-label style="display: inline !important;" no-padding no-margin>{{ day }}</ion-label>
+              <ion-checkbox no-margin no-padding></ion-checkbox>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-item-divider>
+          Find reported bike crashes
+          <ion-note item-right><button ion-button clear>Reset</button></ion-note>
+        </ion-item-divider>
+        <ion-item no-lines>
+          <ion-input #search id="search" [(ngModel)]="addressQuery" item-left type="text" placeholder="Enter address..." autocorrect="off" (keyup)="keyUpEvent($event)"></ion-input>
+          <ion-select item-right interface="popover" placeholder="Radius..." style="float: right;">
+            <ion-option *ngFor="let rad of radiusOptions" value="rad">
+              {{ rad }}
+            </ion-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label>At an intersection</ion-label>
+          <ion-checkbox></ion-checkbox>
+        </ion-item>
+
+        <ion-item-divider>
+          Environment
+          <ion-note item-right><button ion-button clear>Reset</button></ion-note>
+        </ion-item-divider>
+        <ion-item no-lines>
+          <ion-select interface="popover" placeholder="Weather conditions" >
+            <ion-option *ngFor="let weather of weatherOptions">
+              {{ weather }}
+            </ion-option>
+          </ion-select>
+        </ion-item>
+        <ion-item no-lines>
+          <ion-select interface="popover" placeholder="Lighting conditions">
+            <ion-option *ngFor="let light of lightingOptions">
+              {{ light }}
+            </ion-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-select interface="popover" placeholder="Surface conditions">
+            <ion-option *ngFor="let surface of surfaceOptions">
+              {{ surface }}
+            </ion-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <button item-left ion-button clear>Clear all options</button>
+          <ion-note item-right style="float: right !important;">found {{ reportsFound }} reports</ion-note>
+        </ion-item>
+      </ion-list>-->
 
     </ion-content>
   </ion-menu>
@@ -21,7 +91,7 @@
 
 
   <!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
-  
+
   <!-- START MAIN CONTENT      Pages displayed from [root] -->
   <ion-nav main [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>
   <!-- END MAIN CONTENT -->
