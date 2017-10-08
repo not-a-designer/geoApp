@@ -111,7 +111,8 @@ export class MenuComponent implements OnInit {
       false,
       this.weatherOptions[0],
       this.lightingOptions[0],
-      this.surfaceOptions[0]);
+      this.surfaceOptions[0]
+    );
     
     this.mapsApiLoader.load().then( () => {
       let searchParam = document.body.getElementsByTagName('input')[0];
@@ -209,5 +210,7 @@ export class MenuComponent implements OnInit {
     this.reset('environment');
     this.location.resetPosition();
   }
+
+  
 
 }

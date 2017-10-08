@@ -5,10 +5,10 @@ import { AgmCoreModule } from '@agm/core';
 import { AngularFireModule } from 'angularfire2';
 
 import { LocationService } from './location.service';
+import { ConnectionService } from './connection.service';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
 import { ComponentsModule } from '../components/components.module';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -24,7 +24,7 @@ export const firebaseConfig = {
   messagingSenderId: '256606025259'
 };
 export const googleMapParams = {
-  apiKey: 'AIzaSyDTdTiXqX3Vsb34aOOdIClPu7F_lSH8x6Q',
+  apiKey: 'AIzaSyATejfZodYj_jzAU8H1MwqZzH_zmCZtYTQ',       //'AIzaSyDTdTiXqX3Vsb34aOOdIClPu7F_lSH8x6Q',
   libraries: ['places'],
   language: 'en',
   region: 'us'
@@ -33,27 +33,26 @@ export const googleMapParams = {
 @NgModule({
   declarations: [
     MyApp,
-    HomePage,
-    ListPage,
+    HomePage
   ],
   imports: [
     BrowserModule,
     ComponentsModule,
     AgmCoreModule.forRoot(googleMapParams),
     AngularFireModule.initializeApp(firebaseConfig),
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage,
-    ListPage
+    HomePage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     Geolocation,
     LocationService,
+    ConnectionService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

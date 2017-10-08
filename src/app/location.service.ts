@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
-
 const DEFAULT_LAT: number = 43.0389;
 const DEFAULT_LNG: number = -87.9065;
 
@@ -14,6 +13,9 @@ export class LocationService {
     private currentLng = DEFAULT_LNG;
 
     public newLocation = new BehaviorSubject<number[]>([this.currentLat, this.currentLng]);
+
+    constructor() {}
+
 
     setPosition(lat: number, lng: number) {
         this.currentLat = lat;
@@ -36,4 +38,6 @@ export class LocationService {
     getLng() {
         return this.currentLng;
     }
+
+    
 }
